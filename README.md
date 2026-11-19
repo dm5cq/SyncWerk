@@ -6,13 +6,19 @@ Dunkel als Standard, Hell und Hoher Kontrast, Sprachausgabe und vollständige Ta
 
 Idee und Prompt: **Stefan J. Kaiser DM5CQ / OE8KKS** · Umsetzung: Claude Opus 5.5 (Anthropic), 16.11.2026
 
+**Lizenz:** GNU GPL v3.0 – siehe `LICENSE`.
+
+## Download
+Die fertige `SyncWerk.exe` und die Kurzanleitung liegen unter **Releases** (rechts auf der GitHub-Seite).
+Im Repository selbst liegt nur der Quellcode.
+
 **Kurzanleitung (1 Seite):** `assets/SyncWerk-Kurzanleitung.pdf` – auch im Programm unter Hilfe.
 
 ---
 
 ## EXE erstellen
 1. Python 3.9 oder neuer installieren (python.org, Haken **„Add python.exe to PATH“**).
-2. Ordner `SyncWerk` entpacken, **`build-exe.bat`** doppelklicken.
+2. Repository herunterladen (grüner Knopf **Code → Download ZIP**) und entpacken, **`build-exe.bat`** doppelklicken.
 3. Ergebnis: `dist\SyncWerk.exe` – eine Datei, läuft ohne Python.
 
 Test ohne Build: `start-ohne-build.bat`.
@@ -83,7 +89,7 @@ Ordner zeigen die auffälligste Farbe ihres Inhalts.
 
 ## Projektstruktur
 ```
-SyncWerk/
+SyncWerk/   (Repository)
 ├─ SyncWerk.py                Start (Oberfläche, --auto, --auftrag, --waechter)
 ├─ syncwerk/
 │  ├─ engine.py               Einlesen, Vergleich, Planung, Umbenennen erkennen, Ausführung

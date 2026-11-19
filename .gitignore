@@ -1,0 +1,19 @@
+# Build-Ergebnisse (entstehen durch build-exe.bat)
+build/
+dist/
+*.spec
+.venv/
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Pakete und Programme gehören in GitHub-Releases, nicht ins Repo
+*.zip
+*.exe
+
+# Sonstiges
+*.swtmp
+Thumbs.db
+desktop.ini
+.DS_Store

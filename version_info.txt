@@ -17,7 +17,7 @@ VSVersionInfo(
         StringStruct('FileDescription', 'SyncWerk - Synchronisation und Backup'),
         StringStruct('FileVersion', '2.2'),
         StringStruct('InternalName', 'SyncWerk'),
-        StringStruct('LegalCopyright', 'Idee und Prompt: Stefan J. Kaiser DM5CQ / OE8KKS - Umsetzung: Claude Opus 5.5 (Anthropic), 16.11.2026'),
+        StringStruct('LegalCopyright', 'Idee und Prompt: Stefan J. Kaiser DM5CQ / OE8KKS - Umsetzung: Claude Opus 5.5 (Anthropic), 16.11.2026 - Lizenz GPL-3.0'),
         StringStruct('OriginalFilename', 'SyncWerk.exe'),
         StringStruct('ProductName', 'SyncWerk'),
         StringStruct('ProductVersion', '2.2')

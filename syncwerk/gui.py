@@ -10,7 +10,8 @@ import time
 import tkinter as tk
 from tkinter import ttk, filedialog
 
-from . import APP_AUTHOR, APP_DATE_LONG, APP_IMPL, APP_NAME, APP_VERSION, COPYRIGHT
+from . import (APP_AUTHOR, APP_DATE_LONG, APP_IMPL, APP_LICENSE, APP_NAME, APP_REPO, APP_VERSION,
+               COPYRIGHT)
 from . import auto
 from . import drives
 from . import engine as E
@@ -1287,8 +1288,11 @@ class App:
                             "msg": f"{ok} erfolgreich" + (f", {failed} Fehler" if failed else "")}], "SyncWerk: ")
                         ).start()
                     if failed:
-                        warn(APP_NAME, f"{failed} Aktion(en) sind fehlgeschlagen.\nDetails stehen im Protokoll.",
-                             self.root)
+                        top = (self.an.error_reasons[:2] if self.an else [])
+                        why = "\n\n".join(f"{n} ×  {r}" for r, n in top)
+                        warn(APP_NAME, f"{failed} Aktion(en) sind fehlgeschlagen.\n\n"
+                                       + (f"Häufigste Ursache:\n{why}\n\n" if why else "")
+                                       + "Details stehen im Protokoll.", self.root)
                     self._after_idle_action = self.analyze
                 elif kind == "batchstep":
                     i, n, name = msg[1:]
@@ -1500,6 +1504,8 @@ class App:
                       f"© 2026 {APP_AUTHOR}\n"
                       f"Idee und Prompt: {APP_AUTHOR}\n"
                       f"Umsetzung: {APP_IMPL}, {APP_DATE_LONG}\n\n"
+                      f"Lizenz: {APP_LICENSE}\n"
+                      f"Quellcode: {APP_REPO}\n\n"
                       f"Sprachausgabe: {'an' if self.speaker.enabled else 'aus'}\n"
                       f"Ansicht: {T.NAMES[T.name()]}\n"
                       f"USB-Wächter: {w}\n"
