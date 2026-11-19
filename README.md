@@ -12,6 +12,10 @@ Idee und Prompt: **Stefan J. Kaiser DM5CQ / OE8KKS** · Umsetzung: Claude Opus 5
 Die fertige `SyncWerk.exe` und die Kurzanleitung liegen unter **Releases** (rechts auf der GitHub-Seite).
 Im Repository selbst liegt nur der Quellcode.
 
+**Neue Version veröffentlichen:** Versionsnummer in `syncwerk/__init__.py` und `version_info.txt` erhöhen,
+`RELEASE_NOTES.md` anpassen, dann auf GitHub unter **Actions → „Release bauen“ → Run workflow** den
+Tag eingeben (z. B. `v2.3`). GitHub baut die EXE auf Windows und legt das Release automatisch an.
+
 **Kurzanleitung (1 Seite):** `assets/SyncWerk-Kurzanleitung.pdf` – auch im Programm unter Hilfe.
 
 ---
