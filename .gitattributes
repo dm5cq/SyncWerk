@@ -1,2 +1,13 @@
-# Auto detect text files and perform LF normalization
+# Text automatisch normalisieren
 * text=auto
+
+# Windows-Batchdateien MÜSSEN CRLF-Zeilenenden haben (sonst Fehler bei goto/Sprungmarken)
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# Binärdateien nie verändern
+*.ico binary
+*.png binary
+*.pdf binary
+*.exe binary
+*.zip binary

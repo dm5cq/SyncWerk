@@ -1,0 +1,51 @@
+# Baut SyncWerk.exe auf Windows und veröffentlicht sie als GitHub-Release.
+# Auslösen: Versions-Tag hochladen (z. B. v2.2) – oder unter "Actions" → "Release bauen" → "Run workflow".
+name: Release bauen
+
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Versions-Tag für das Release (z. B. v2.2)"
+        required: true
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: PyInstaller installieren
+        run: python -m pip install -r requirements.txt
+
+      - name: SyncWerk.exe bauen
+        run: >
+          python -m PyInstaller --noconfirm --clean --onefile --windowed
+          --name SyncWerk --icon assets\SyncWerk.ico --add-data "assets;assets"
+          --version-file version_info.txt SyncWerk.py
+
+      - name: Kurztest (EXE vorhanden und Version stimmt)
+        shell: pwsh
+        run: |
+          $v = (Get-Item dist\SyncWerk.exe).VersionInfo.ProductVersion
+          Write-Host "Gebaut: SyncWerk.exe Version $v"
+          if (-not $v) { throw "Keine Versionsinfo in der EXE" }
+
+      - name: Release veröffentlichen
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.event.inputs.tag || github.ref_name }}
+          name: SyncWerk ${{ github.event.inputs.tag || github.ref_name }}
+          body_path: RELEASE_NOTES.md
+          files: |
+            dist/SyncWerk.exe
+            assets/SyncWerk-Kurzanleitung.pdf
