@@ -49,6 +49,14 @@ mitgeben.
 > `21:50:57  FEHLER  → kopieren  N1MM Logger+/Wav/DM5CQ2/MHz.wav: Invalid argument` (… viele weitere
 > Dateien im selben Ordner)
 
+## Prompt 5–7 – GitHub (Stefan J. Kaiser, 19.11.2026)
+
+> findest du SyncWerk jetzt auf GitHub und passe es so? · ja (Release anlegen) · leg los und richte alles her
+
+Ergebnis: Repo `dm5cq/SyncWerk` aufgeräumt (nur noch Quellcode im Hauptverzeichnis, `.gitignore`,
+`.bat` mit CRLF), Lizenz GPL-3.0 im Info-Fenster, automatischer Release-Build per GitHub Actions,
+Release **v2.2** mit `SyncWerk.exe` + Kurzanleitung veröffentlicht.
+
 ---
 
 ## Rahmenbedingungen
@@ -58,6 +66,12 @@ mitgeben.
 - Akzent Orange; Statusfarben Grün = identisch, Blau = neu, Gelb = geändert/umbenannt,
   Rot = löschen/Konflikt/Fehler
 - Build lokal per `build-exe.bat` (PyInstaller, eine EXE)
+
+## Weiterarbeiten in einem neuen Chat
+1. GitHub-Repo `dm5cq/SyncWerk` im Chat verbinden bzw. nennen.
+2. Sagen: „Lies PROMPT.md im Repo SyncWerk und mach weiter mit …“.
+3. Neue Version: Versionsnummer in `syncwerk/__init__.py` + `version_info.txt` erhöhen,
+   `RELEASE_NOTES.md` anpassen, Actions → „Release bauen“ mit neuem Tag (z. B. `v2.3`).
 
 ## Technischer Stand 2.2
 - Python 3.9+, nur Standardbibliothek (Tkinter/ttk „clam“); Build mit PyInstaller `--onefile --windowed`
@@ -86,6 +100,11 @@ mitgeben.
 - Kommandozeile: `--profil NAME --auto`, `--auftrag NAME --auto`, `--waechter`
 - Kurzanleitung: `assets/SyncWerk-Kurzanleitung.pdf`, erzeugt mit `tools/kurzanleitung_erstellen.py`
 - Review-Ergebnis: siehe `REVIEW.md`
+- Repository: `github.com/dm5cq/SyncWerk` (privat), Branch `main`
+- Release-Build: `.github/workflows/release.yml` (windows-latest, Python 3.12, PyInstaller wie
+  `build-exe.bat`), Auslöser Tag `v*` oder manuell mit Eingabe `tag`; Text aus `RELEASE_NOTES.md`
+- Offen: Lizenz-/Repo-Zeile im Info-Fenster ist ab dem Release-Build v2.2 enthalten; leeres
+  Release „2.2.0“ (manuell angelegt) sollte gelöscht werden
 
 ## Nächste Schritte
 Siehe `VORSCHLAEGE.md` (Ideen für 3.0).
